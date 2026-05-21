@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  COLEGIO VALLE COLONIAL - Página Web Oficial - JOSË CARLOS XINIC
+  ============================================================
+  ARCHIVO: index.html
+  DESCRIPCIÓN: Estructura principal de la página web.
+
+  ¿QUÉ ES HTML?
+  HTML (HyperText Markup Language) es el lenguaje que define
+  la ESTRUCTURA y el CONTENIDO de una página web.
+  Usamos "etiquetas" (tags) para organizar el contenido.
+
+  ESTRUCTURA BÁSICA DE UNA ETIQUETA:
+  <nombre-etiqueta atributo="valor"> contenido </nombre-etiqueta>
+  ============================================================
+-->
+
+<!-- 
+  <!DOCTYPE html> le dice al navegador que este archivo usa HTML5,
+  la versión más moderna de HTML.
+-->
+
+<html lang="es">
+<!--
+  <html> es la etiqueta raíz. Todo el contenido va dentro de ella.
+  lang="es" le indica al navegador que el idioma es Español.
+-->
+
+<head>
+  <!--
+    <head> contiene información INVISIBLE para el usuario pero
+    muy importante para el navegador y los motores de búsqueda.
+    Aquí van los metadatos, el título y los enlaces a CSS.
+  -->
+
+  <!-- Codificación de caracteres: permite usar tildes y ñ -->
+  <meta charset="UTF-8">
+
+  <!-- Hace que la página sea RESPONSIVE (se adapte a móviles y pantallas) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Descripción para motores de búsqueda como Google -->
+  <meta name="description" content="Colegio Valle Colonial - Educación de excelencia con valores y tradición">
+
+  <!-- Título que aparece en la pestaña del navegador -->
+  <title>Colegio Valle Colonial</title>
+
+  <!--
+    ENLACE AL ARCHIVO CSS EXTERNO
+    rel="stylesheet" indica que es una hoja de estilos
+    href="estilos.css" es la ruta al archivo CSS
+    ¡Esta línea es la que conecta HTML con CSS!
+  -->
+  <link rel="stylesheet" href="estilos.css">
+
+  <!-- Google Fonts: cargamos fuentes tipográficas desde internet -->
+  <link rel="preconnect" href="">
+  <link rel="preconnect" href="" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <!--
+    <body> contiene TODO el contenido VISIBLE de la página.
+    Aquí van textos, imágenes, botones, menús, etc.
+  -->
+
+  <!-- ======================================================
+       SECCIÓN 1: BARRA DE NAVEGACIÓN (NAV)
+       ======================================================
+       <nav> es una etiqueta semántica para menús de navegación.
+       "Semántica" significa que su nombre describe su función.
+       Etiquetas semánticas: <header>, <nav>, <main>, <section>,
+       <article>, <aside>, <footer>
+  -->
+  <nav class="navbar">
+    <!--
+      class="navbar" le asigna una CLASE a este elemento.
+      Las clases sirven para aplicar estilos desde CSS.
+      Un elemento puede tener varias clases: class="clase1 clase2"
+    -->
+
+    <!-- Logo del colegio -->
+    <div class="nav-logo">
+      <!--
+        <div> es un contenedor genérico sin significado semántico.
+        Se usa mucho para agrupar elementos y aplicarles estilos.
+      -->
+      <div class="logo-escudo">VC</div>
+      <div class="logo-texto">
+        <span class="logo-titulo">Valle Colonial</span>
+        <!--
+          <span> es un contenedor en línea (inline).
+          A diferencia de <div> que ocupa toda la línea,
+          <span> solo ocupa el espacio de su contenido.
+        -->
+        <span class="logo-subtitulo">Valores y Desarrollo</span>
+      </div>
+    </div>
+
+    <!-- Menú de navegación con lista -->
+    <ul class="nav-menu">
+      <!--
+        <ul> = Unordered List (lista sin orden / sin números)
+        <ol> = Ordered List (lista con números)
+        <li> = List Item (elemento de la lista)
+      -->
+      <li><a href="#inicio">Inicio</a></li>
+      <!--
+        <a href="..."> es un ENLACE (anchor/ancla).
+        href="#inicio" hace scroll hasta el elemento con id="inicio"
+        Los # al inicio son "anclas" que apuntan a secciones de la misma página.
+      -->
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#niveles">Niveles</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#contacto" class="btn-nav">Contáctanos</a></li>
+    </ul>
+
+  </nav>
+  <!-- Fin de la barra de navegación -->
+
+
+  <!-- ======================================================
+       SECCIÓN 2: HERO (Portada Principal)
+       ======================================================
+       El "Hero" es la sección grande y llamativa que se ve
+       primero cuando se carga la página.
+       id="inicio" permite que el enlace href="#inicio" llegue aquí.
+  -->
+  <header id="inicio" class="hero">
+    <!--
+      <header> contiene la cabecera principal de la página.
+      No confundir con <head> (que es invisible para el usuario).
+    -->
+
+    <!-- Capa de contenido sobre la imagen de fondo -->
+    <div class="hero-overlay">
+      <div class="hero-content">
+
+        <p class="hero-subtag">Bienvenidos al</p>
+
+        <h1 class="hero-titulo">
+          <!--
+            <h1> al <h6> son encabezados (headings).
+            <h1> es el más importante (solo debe haber uno por página).
+            <h2>, <h3>... son subtítulos de menor jerarquía.
+          -->
+          Colegio Valle Colonial
+        </h1>
+
+        <p class="hero-descripcion">
+          <!--
+            <p> es un párrafo de texto. Se usa para bloques de texto.
+          -->
+          Formando líderes con valores, excelencia académica y
+          visión de futuro desde 2003.
+        </p>
+
+        <!-- Botones de acción (Call to Action = CTA) -->
+        <div class="hero-botones">
+          <a href="#nosotros" class="btn btn-primario">Conoce más</a>
+          <a href="#contacto" class="btn btn-secundario">Inscripciones</a>
+        </div>
+
+      </div>
+    </div>
+    <!-- Fin hero-overlay -->
+
+  </header>
+  <!-- Fin sección Hero -->
+
+
+  <!-- ======================================================
+       SECCIÓN 3: ESTADÍSTICAS (FLEXBOX - ROW)
+       ======================================================
+       Esta sección usa FLEXBOX para alinear las estadísticas
+       en una fila (row) con distribución espaciada.
+  -->
+  <section class="estadisticas">
+    <!--
+      <section> es una etiqueta semántica para agrupar contenido
+      relacionado temáticamente. Debe tener un encabezado.
+    -->
+
+    <!--
+      FLEXBOX AQUÍ:
+      La clase "estadisticas" en CSS tendrá:
+      display: flex;          → activa flexbox
+      flex-direction: row;    → los hijos se alinean en fila
+      justify-content: space-around; → espacio distribuido
+      Ver más en estilos.css
+    -->
+
+    <div class="stat-item">
+      <span class="stat-numero">20+</span>
+      <span class="stat-label">Años de experiencia</span>
+    </div>
+
+    <div class="stat-item">
+      <span class="stat-numero">1,000</span>
+      <span class="stat-label">Estudiantes activos</span>
+    </div>
+
+    <div class="stat-item">
+      <span class="stat-numero">30</span>
+      <span class="stat-label">Docentes certificados</span>
+    </div>
+
+    <div class="stat-item">
+      <span class="stat-numero">98%</span>
+      <span class="stat-label">Tasa de graduación</span>
+    </div>
+
+  </section>
+  <!-- Fin estadísticas -->
+
+
+  <!-- ======================================================
+       CONTENIDO PRINCIPAL
+       ======================================================
+       <main> contiene el contenido central de la página.
+       Solo debe existir un <main> por página.
+  -->
+  <main>
+
+    <!-- ====================================================
+         SECCIÓN 4: NOSOTROS (FLEXBOX - ROW con imagen)
+         ====================================================
+         Flexbox con dos columnas: texto a la izquierda,
+         imagen a la derecha.
+    -->
+    <section id="nosotros" class="seccion-nosotros">
+
+      <!-- Encabezado de sección reutilizable -->
+      <div class="seccion-encabezado">
+        <span class="seccion-tag">Nuestra historia</span>
+        <h2>¿Quiénes somos?</h2>
+        <div class="linea-decorativa"></div>
+      </div>
+
+      <!--
+        FLEXBOX AQUÍ - dos columnas lado a lado
+        La clase "nosotros-contenido" en CSS tendrá:
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 60px;
+      -->
+      <div class="nosotros-contenido">
+
+        <!-- Columna izquierda: Texto -->
+        <div class="nosotros-texto">
+          <h3>Tradición y excelencia desde 2000</h3>
+
+          <p>
+            El Colegio Valle Colonial nació con la misión de ofrecer
+            una educación integral que combine el rigor académico con
+            el desarrollo de valores humanos profundos.
+          </p>
+
+          <p>
+            Nuestro modelo educativo que prepara a los estudiantes
+            para enfrentar los retos del siglo XXI, fomentando el
+            pensamiento crítico, la creatividad y el liderazgo.
+          </p>
+
+          <!-- Lista de características -->
+          <ul class="lista-caracteristicas">
+            <li>
+              <span class="icono-check">✓</span>
+              Certificación en especialidades varias
+            </li>
+            <li>
+              <span class="icono-check">✓</span>
+              Instalaciones y laboratorios equipados
+            </li>
+            <li>
+              <span class="icono-check">✓</span>
+              Programa de deportes y artes
+            </li>
+            <li>
+              <span class="icono-check">✓</span>
+              Orientación psicopedagógica
+            </li>
+          </ul>
+
+        </div>
+        <!-- Fin columna texto -->
+
+        <!-- Columna derecha: Imagen -->
+        <div class="nosotros-imagen">
+          <!--
+            <figure> se usa para contenido visual con descripción.
+            <figcaption> es el pie de foto o descripción.
+          -->
+          <figure class="imagen-colegio">
+            <!--
+              <img> inserta una imagen.
+              src = ruta de la imagen
+              alt = texto alternativo (accesibilidad y SEO)
+              IMPORTANTE: alt siempre debe describir la imagen.
+              Si la imagen no carga, se muestra el texto del alt.
+            -->
+            <img
+              src="WhatsApp Image 2026-05-20 at 7.19.45 PM.jpeg"
+              alt="Edificio principal del Colegio Valle Colonial"
+            >
+            <figcaption>Edificio principal — Campus </figcaption>
+          </figure>
+        </div>
+        <!-- Fin columna imagen -->
+
+      </div>
+      <!-- Fin nosotros-contenido (flexbox) -->
+
+    </section>
+    <!-- Fin sección Nosotros -->
+
+
+    <!-- ====================================================
+         SECCIÓN 5: NIVELES EDUCATIVOS (CSS GRID)
+         ====================================================
+         Esta sección usa CSS GRID para crear una cuadrícula
+         de tarjetas de niveles educativos.
+
+         DIFERENCIA ENTRE FLEXBOX Y GRID:
+         • FLEXBOX: diseño en UNA dimensión (fila O columna)
+         • GRID: diseño en DOS dimensiones (filas Y columnas)
+    -->
+    <section id="niveles" class="seccion-niveles">
+
+      <div class="seccion-encabezado claro">
+        <span class="seccion-tag">Lo que ofrecemos</span>
+        <h2>Niveles Educativos</h2>
+        <div class="linea-decorativa"></div>
+      </div>
+
+      <!--
+        CSS GRID AQUÍ:
+        La clase "grid-niveles" en CSS tendrá:
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        Los 3 elementos se distribuyen automáticamente.
+      -->
+      <div class="grid-niveles">
+
+        
+
+        <!-- Tarjeta 2: Primaria -->
+        <div class="tarjeta-nivel tarjeta-destacada">
+          <!--
+            Una clase adicional "tarjeta-destacada" permite
+            estilizar esta tarjeta diferente en CSS.
+          -->
+          <div class="tarjeta-badge">Más solicitado</div>
+          <div class="tarjeta-icono">📚</div>
+          <div class="tarjeta-cuerpo">
+            <h3>Primaria</h3>
+            <p class="tarjeta-edad">7 a 12 años</p>
+            <p>
+              Educación primaria con metodología activa,
+              laboratorios de ciencias, tecnología y un
+              sólido programa bilingüe.
+            </p>
+            <ul class="tarjeta-lista">
+              <li>1ro a 6to Primaria</li>
+              <li>Laboratorio STEM</li>
+              <li>Deportes y artes</li>
+            </ul>
+          </div>
+          <a href="#contacto" class="btn-tarjeta">Ver más</a>
+        </div>
+
+        <!-- Tarjeta 3: Básicos y Diversificado -->
+        <div class="tarjeta-nivel">
+          <div class="tarjeta-icono">🎓</div>
+          <div class="tarjeta-cuerpo">
+            <h3>Básicos y Diversificado</h3>
+            <p class="tarjeta-edad">13 a 18 años</p>
+            <p>
+              Preparación universitaria con énfasis en ciencias,
+              humanidades y negocios. Bachillerato con orientación
+              internacional.
+            </p>
+            <ul class="tarjeta-lista">
+              <li>1ro a 3ro Básico</li>
+              <li>Bachillerato en Ciencias</li>
+              <li>Bachillerato en Computación</li>
+            </ul>
+          </div>
+          <a href="#contacto" class="btn-tarjeta">Ver más</a>
+        </div>
+
+      </div>
+      <!-- Fin grid-niveles (CSS Grid) -->
+
+    </section>
+    <!-- Fin sección Niveles -->
+
+
+    <!-- ====================================================
+         SECCIÓN 6: GALERÍA (CSS GRID con áreas)
+         ====================================================
+         Galería de imágenes con CSS Grid usando diferentes
+         tamaños de celdas para un diseño dinámico.
+    -->
+    <section id="galeria" class="seccion-galeria">
+
+      <div class="seccion-encabezado">
+        <span class="seccion-tag">Nuestras instalaciones</span>
+        <h2>Galería</h2>
+        <div class="linea-decorativa"></div>
+      </div>
+
+      <!--
+        CSS GRID AVANZADO AQUÍ:
+        Usaremos grid-template-areas o grid-column/row span
+        para hacer que algunas imágenes sean más grandes.
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        gap: 12px;
+      -->
+      <div class="grid-galeria">
+
+        <!-- Imagen grande (ocupa 2 columnas) -->
+        <figure class="galeria-item galeria-grande">
+          <img
+            src="https://scontent.fgua2-1.fna.fbcdn.net/v/t39.30808-6/574615467_122329764800003803_1861420623004466277_n.png?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=tfu6hs_7Ja8Q7kNvwGTCcgL&_nc_oc=AdpGXSWF7XZ2g9OYScbgvtbV9a_gyEd-qejadRaOoR3fNRxBWMGyfu15mEOIFMSVWewRRg6wpeIfHPdEIhCm6O2h&_nc_zt=23&_nc_ht=scontent.fgua2-1.fna&_nc_gid=gbLN75aOspQm3_EZLf7n8Q&_nc_ss=7b2a8&oh=00_Af5UYLzqWy9EppYs5Ki2Uj9JaO4p6azf5lv9WKiMR4Hahg&oe=6A1444A9"
+            alt="Biblioteca del colegio con estudiantes"
+          >
+          <figcaption></figcaption>
+        </figure>
+
+        <!-- Imagen normal -->
+        <figure class="galeria-item">
+          <img
+            src="https://scontent.fgua2-2.fna.fbcdn.net/v/t39.30808-6/647646207_122352391430003803_1024800858698626958_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=IaNreFfEIaIQ7kNvwF1FbR5&_nc_oc=Ado8YSs_ljDTKXU27Uygj6krhmabGLmg2mnk-oeUT_pKV_PHo6MGHf8tVsV9zqF9ibnYTEseqG-02Ura8N_SAI2W&_nc_zt=23&_nc_ht=scontent.fgua2-2.fna&_nc_gid=m0IRyxL1c_rEfH8RTHgqqg&_nc_ss=7b2a8&oh=00_Af5g4WpPz9eQHIGrgGFmiQSCV6Wz_iEbNELEEycXMMidYQ&oe=6A144877"
+            alt="Salón de clases moderno"
+          >
+          <figcaption>Actividades</figcaption>
+        </figure>
+
+        <!-- Imagen normal -->
+        <figure class="galeria-item">
+          <img
+            src="https://scontent.fgua2-2.fna.fbcdn.net/v/t39.30808-6/669194677_122358101102003803_7717559670852066839_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=FAt9HZy-fZIQ7kNvwGEJNXC&_nc_oc=AdokzN36hyy_WnedT0hus9z_f60D9a3kbnJXKWXzWvbNe09prIgjt2Q-0zuA639uJFQXVJ8oL9VufXbQcvzCb74h&_nc_zt=23&_nc_ht=scontent.fgua2-2.fna&_nc_gid=GDlT3zj6L01JOFaxWB3C7Q&_nc_ss=7b2a8&oh=00_Af7ZnAPR7AsgXn2IgE4l8HASYTaLPr4Em5gZCviIgxBX6w&oe=6A144B26"
+            alt="Laboratorio de ciencias"
+          >
+          <figcaption>Actividades Graduandos</figcaption>
+        </figure>
+
+        <!-- Imagen normal -->
+        <figure class="galeria-item">
+          <img
+            src="WhatsApp Image 2026-05-20 at 7.38.39 PM.jpeg"
+            alt="Cancha deportiva del colegio"
+          >
+          <figcaption>Salones</figcaption>
+        </figure>
+
+        <!-- Imagen grande (ocupa 2 columnas) -->
+        <figure class="galeria-item galeria-grande">
+          <img
+            src="WhatsApp Image 2026-05-20 at 7.19.49 PM.jpeg"
+            alt="Salón de computación con computadoras modernas"
+          >
+          <figcaption>Area recreativa</figcaption>
+        </figure>
+
+        <!-- Imagen normal -->
+        <figure class="galeria-item">
+          <img
+            src="WhatsApp Image 2026-05-20 at 7.19.47 PM.jpeg"
+            alt="Patio y áreas verdes del colegio"
+          >
+          <figcaption>Parte alta</figcaption>
+        </figure>
+
+      </div>
+      <!-- Fin grid-galeria -->
+
+    </section>
+    <!-- Fin sección Galería -->
+
+
+    <!-- ====================================================
+         SECCIÓN 7: DOCENTES DESTACADOS (FLEXBOX + GRID)
+         ====================================================
+         Combinación de Flexbox (encabezado) y Grid (tarjetas).
+    -->
+    <section class="seccion-docentes">
+
+      <div class="seccion-encabezado claro">
+        <span class="seccion-tag">Nuestro equipo</span>
+        <h2>Docentes Destacados</h2>
+        <div class="linea-decorativa"></div>
+      </div>
+
+      <!--
+        GRID para las tarjetas de docentes:
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        "auto-fit" hace que el grid sea automáticamente RESPONSIVE:
+        añade o quita columnas según el espacio disponible.
+      -->
+      <div class="grid-docentes">
+
+        <div class="tarjeta-docente">
+          <div class="docente-avatar">
+            <img
+              src="WhatsApp Image 2026-05-20 at 8.47.44 PM.jpeg"
+              alt="Foto de Director"
+            >
+          </div>
+          <h4>Adolfo Valle</h4>
+          <p class="docente-cargo">Director General</p>
+          <p class="docente-especialidad">Matematica</p>
+        </div>
+
+        <div class="tarjeta-docente">
+          <div class="docente-avatar">
+            <img
+              src="WhatsApp Image 2026-05-20 at 2.44.05 PM.jpeg"
+              alt="Foto del Profesor Carlos"
+            >
+          </div>
+          <h4>Margarita Can</h4>
+          <p class="docente-cargo">Docente</p>
+          <p class="docente-especialidad">Etica profecional y relaciones humanas</p>
+        </div>
+
+        <div class="tarjeta-docente">
+          <div class="docente-avatar">
+            <img
+              src="WhatsApp Image 2026-05-20 at 2.44.15 PM.jpeg"
+              alt="Foto de la Profesora"
+            >
+          </div>
+          <h4>Carlos Fernandez</h4>
+          <p class="docente-cargo">Coordinador General</p>
+          <p class="docente-especialidad">Reparacion y soporte tecnico</p>
+        </div>
+
+        <div class="tarjeta-docente">
+          <div class="docente-avatar">
+            <img
+              src="WhatsApp Image 2026-05-20 at 2.44.44 PM.jpeg"
+              alt="Foto del Profesor"
+            >
+          </div>
+          <h4>Sucely Ramos</h4>
+          <p class="docente-cargo">Docente</p>
+          <p class="docente-especialidad">Biologia</p>
+        </div>
+
+      </div>
+      <!-- Fin grid-docentes -->
+
+    </section>
+    <!-- Fin sección Docentes -->
+
+
+    <!-- ====================================================
+         SECCIÓN 8: CONTACTO (FLEXBOX)
+         ====================================================
+         Formulario de contacto con FLEXBOX para la distribución.
+    -->
+    <section id="contacto" class="seccion-contacto">
+
+      <div class="seccion-encabezado">
+        <span class="seccion-tag">Escríbenos</span>
+        <h2>Contáctanos</h2>
+        <div class="linea-decorativa"></div>
+      </div>
+
+      <!--
+        FLEXBOX AQUÍ - dos columnas: info y formulario
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+        align-items: flex-start;
+      -->
+      <div class="contacto-contenido">
+
+        <!-- Información de contacto -->
+        <div class="contacto-info">
+          <h3>Información de contacto</h3>
+
+          <div class="info-item">
+            <span class="info-icono">📍</span>
+            <div>
+              <strong>Dirección</strong>
+              <p>Calle Ancha de los Herreros No.59 INTERIOR</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icono">📞</span>
+            <div>
+              <strong>Teléfono</strong>
+              <p>+502 7832-9444</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icono">✉️</span>
+            <div>
+              <strong>Correo electrónico</strong>
+              <p>info@vallecolonial.edu.gt</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icono">🕐</span>
+            <div>
+              <strong>Horario de atención</strong>
+              <p>Lunes a Viernes: 7:00 AM – 5:00 PM</p>
+            </div>
+          </div>
+
+        </div>
+        <!-- Fin contacto-info -->
+
+        <!-- Formulario de contacto -->
+        <div class="contacto-form">
+          <!--
+            <form> es el contenedor de un formulario.
+            action = URL a donde se envían los datos
+            method = POST (datos ocultos) o GET (datos en URL)
+          -->
+          <form action="#" method="POST" class="formulario">
+
+            <!--
+              <label> es la etiqueta descriptiva de un campo.
+              for="nombre" vincula el label con el input id="nombre".
+              Importante para accesibilidad.
+            -->
+            <div class="campo-grupo">
+              <label for="nombre">Nombre completo</label>
+              <!--
+                <input> es el campo de entrada de datos.
+                type="text" = campo de texto
+                id = identificador único
+                name = nombre del campo al enviar
+                placeholder = texto guía dentro del campo
+                required = campo obligatorio
+              -->
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Tu nombre completo"
+                required
+              >
+            </div>
+
+            <div class="campo-grupo">
+              <label for="email">Correo electrónico</label>
+              <!--
+                type="email" valida automáticamente que sea un email válido
+              -->
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="tucorreo@ejemplo.com"
+                required
+              >
+            </div>
+
+            <div class="campo-grupo">
+              <label for="telefono">Teléfono</label>
+              <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                placeholder="+(502) 0000-0000"
+              >
+            </div>
+
+            <div class="campo-grupo">
+              <label for="nivel">Nivel de interés</label>
+              <!--
+                <select> crea un menú desplegable.
+                <option> son las opciones del menú.
+              -->
+              <select id="nivel" name="nivel">
+                <option value="">Selecciona un nivel...</option>
+                <option value="preprimaria">Pre-primaria</option>
+                <option value="primaria">Primaria</option>
+                <option value="basicos">Básicos</option>
+                <option value="diversificado">Diversificado</option>
+              </select>
+            </div>
+
+            <div class="campo-grupo">
+              <label for="mensaje">Mensaje</label>
+              <!--
+                <textarea> es un campo de texto multilínea.
+                rows = número de filas visibles
+              -->
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                rows="4"
+                placeholder="Escribe tu consulta aquí..."
+              ></textarea>
+            </div>
+
+            <!--
+              <button type="submit"> envía el formulario.
+              type="button" solo es un botón sin enviar formulario.
+            -->
+            <button type="submit" class="btn btn-primario btn-full">
+              Enviar mensaje ✉️
+            </button>
+
+          </form>
+          <!-- Fin formulario -->
+
+        </div>
+        <!-- Fin contacto-form -->
+
+      </div>
+      <!-- Fin contacto-contenido (flexbox) -->
+
+    </section>
+    <!-- Fin sección Contacto -->
+
+  </main>
+  <!-- Fin del contenido principal -->
+
+
+  <!-- ======================================================
+       PIE DE PÁGINA (FOOTER)
+       ======================================================
+       <footer> contiene información al final de la página:
+       derechos, redes sociales, links secundarios, etc.
+  -->
+  <footer class="pie-pagina">
+
+    <!--
+      FLEXBOX + GRID combinados en el footer para organizar columnas.
+    -->
+    <div class="footer-grid">
+
+      <!-- Columna 1: Logo y descripción -->
+      <div class="footer-columna">
+        <div class="footer-logo">
+          <div class="logo-escudo">VC</div>
+          <span>Valle Colonial</span>
+        </div>
+        <p>
+          Formando ciudadanos íntegros y profesionales exitosos
+          desde 2003. Educación bilingüe de excelencia en Guatemala.
+        </p>
+      </div>
+
+      <!-- Columna 2: Links rápidos -->
+      <div class="footer-columna">
+        <h4>Acceso rápido</h4>
+        <ul class="footer-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#niveles">Niveles educativos</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Redes sociales -->
+      <div class="footer-columna">
+        <h4>Síguenos</h4>
+        <div class="redes-sociales">
+          <a href="#" class="red-social" aria-label="Facebook">f</a>
+          <a href="#" class="red-social" aria-label="Instagram">in</a>
+          <a href="#" class="red-social" aria-label="YouTube">▶</a>
+          <a href="#" class="red-social" aria-label="Twitter">𝕏</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- Fin footer-grid -->
+
+    <!-- Línea de derechos de autor -->
+    <div class="footer-derechos">
+      <!--
+        &copy; es un "HTML entity" que representa el símbolo ©
+        Otras entidades comunes:
+        &amp;  = &
+        &lt;   = <
+        &gt;   = >
+        &nbsp; = espacio que no rompe
+      -->
+      <p>&copy; 2026 Colegio Valle Colonial. Todos los derechos reservados.</p>
+      <p>Diseñado con 💚 para la comunidad educativa guatemalteca</p>
+    </div>
+
+  </footer>
+  <!-- Fin del pie de página -->
+
+</body>
+<!-- Fin del cuerpo -->
+
+</html>
+<!--
+  ============================================================
+  FIN DEL ARCHIVO index.html
+  ============================================================
+  RESUMEN DE ETIQUETAS USADAS:
+  - Estructura:   html, head, body, main
+  - Semánticas:   header, nav, section, footer, figure
+  - Contenido:    h1-h4, p, a, ul, li, img, span, div
+  - Formulario:   form, label, input, select, textarea, button
+  ============================================================
+-->

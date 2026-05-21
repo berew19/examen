@@ -1,0 +1,1303 @@
+/*
+  ============================================================
+  COLEGIO VALLE COLONIAL — Hoja de Estilos
+  ============================================================
+  ARCHIVO: estilos.css
+  DESCRIPCIÓN: Contiene TODOS los estilos visuales de la página.
+
+  ¿QUÉ ES CSS?
+  CSS (Cascading Style Sheets) define el DISEÑO y la
+  PRESENTACIÓN visual del HTML. Controla colores, tipografías,
+  tamaños, posición, animaciones y más.
+
+  ESTRUCTURA DE UNA REGLA CSS:
+  selector {
+    propiedad: valor;
+    propiedad: valor;
+  }
+
+  TIPOS DE SELECTORES:
+  .clase        → selecciona elementos con esa clase
+  #id           → selecciona el elemento con ese id (único)
+  etiqueta      → selecciona todas las etiquetas de ese tipo
+  padre hijo    → selecciona "hijo" dentro de "padre"
+  elem1, elem2  → selecciona ambos elementos
+
+  CASCADA: Si dos reglas afectan al mismo elemento,
+  gana la más ESPECÍFICA o la que viene DESPUÉS.
+  ============================================================
+*/
+
+
+/* ============================================================
+   1. VARIABLES CSS (Custom Properties)
+   ============================================================
+   Las variables permiten reutilizar valores en todo el CSS.
+   Se definen en :root (el elemento raíz = html).
+   Se usan con: var(--nombre-variable)
+   ¡Si cambias el color aquí, cambia en toda la página!
+============================================================ */
+:root {
+  /* --- Paleta de colores --- */
+  --color-primario: #5f6361;        /* Verde oscuro institucional */
+  --color-secundario: #2d6a4f;      /* Verde medio */
+  --color-acento: #78bdf5;          /* Dorado colonial */
+  --color-acento-claro: #cad1d4;    /* Dorado claro */
+  --color-fondo: #f7f5f0;           /* Crema / blanco cálido */
+  --color-fondo-oscuro: #5e9faa;    /* Verde muy oscuro */
+  --color-texto: #2c2c2c;           /* Casi negro para texto */
+  --color-texto-claro: #ffffff;     /* Blanco para texto sobre fondo oscuro */
+  --color-texto-gris: #6b7280;      /* Gris para texto secundario */
+  --color-borde: #d1c7b0;           /* Beige para bordes */
+
+  /* --- Tipografía --- */
+  --fuente-titulo: 'Playfair Display', Georgia, serif;   /* Elegante para títulos */
+  --fuente-cuerpo:  'Lato', Helvetica, sans-serif;       /* Limpia para cuerpo */
+
+  /* --- Espaciado --- */
+  --espacio-xs: 8px;
+  --espacio-sm: 16px;
+  --espacio-md: 32px;
+  --espacio-lg: 64px;
+  --espacio-xl: 96px;
+
+  /* --- Bordes y sombras --- */
+  --radio-borde: 8px;
+  --radio-borde-lg: 16px;
+  --sombra-suave: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --sombra-media: 0 8px 30px rgba(0, 0, 0, 0.15);
+  --sombra-fuerte: 0 16px 48px rgba(0, 0, 0, 0.25);
+
+  /* --- Transiciones --- */
+  --transicion: all 0.3s ease;
+}
+
+
+/* ============================================================
+   2. RESET Y ESTILOS BASE
+   ============================================================
+   Un "reset" elimina los estilos por defecto del navegador
+   para partir de una base consistente en todos los navegadores.
+============================================================ */
+
+/* El operador * selecciona TODOS los elementos */
+* {
+  /*
+    box-sizing: border-box hace que el padding y border
+    se incluyan en el ancho total del elemento.
+    Es la configuración estándar en proyectos modernos.
+  */
+  box-sizing: border-box;
+  margin: 0;    /* Elimina márgenes por defecto */
+  padding: 0;   /* Elimina relleno (padding) por defecto */
+}
+
+html {
+  /*
+    scroll-behavior: smooth hace que los enlaces ancla (#section)
+    desplacen la página suavemente en lugar de saltar.
+  */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente-cuerpo);       /* Fuente principal */
+  background-color: var(--color-fondo);    /* Color de fondo */
+  color: var(--color-texto);               /* Color de texto */
+  line-height: 1.7;                        /* Espaciado entre líneas */
+  font-size: 16px;                         /* Tamaño base de texto */
+}
+
+/* Imágenes responsivas: nunca se salen de su contenedor */
+img {
+  max-width: 100%;   /* Máximo 100% del contenedor padre */
+  height: auto;      /* Altura proporcional al ancho */
+  display: block;    /* Elimina el espacio extra debajo de las imágenes */
+}
+
+/* Eliminar decoración de todos los enlaces */
+a {
+  text-decoration: none;
+  color: inherit;  /* Hereda el color del elemento padre */
+}
+
+/* Eliminar puntos de listas */
+ul {
+  list-style: none;
+}
+
+
+/* ============================================================
+   3. COMPONENTES REUTILIZABLES
+   ============================================================
+   Estilos que se usan en varias partes de la página.
+   Principio DRY: Don't Repeat Yourself (No te repitas).
+============================================================ */
+
+/* --- Encabezados de sección --- */
+.seccion-encabezado {
+  text-align: center;
+  margin-bottom: var(--espacio-lg);
+}
+
+.seccion-encabezado h2 {
+  font-family: var(--fuente-titulo);
+  font-size: 2.5rem;        /* rem = relativo al tamaño base del html */
+  color: var(--color-primario);
+  margin-bottom: var(--espacio-sm);
+}
+
+/* Versión clara (para secciones con fondo oscuro) */
+.seccion-encabezado.claro h2 {
+  color: var(--color-texto-claro);
+}
+
+.seccion-tag {
+  display: inline-block;
+  background-color: var(--color-acento);
+  color: var(--color-primario);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;          /* Espaciado entre letras */
+  text-transform: uppercase;    /* Todo en mayúsculas */
+  padding: 4px 14px;
+  border-radius: 50px;          /* Radio muy alto = cápsula */
+  margin-bottom: 12px;
+}
+
+.seccion-encabezado.claro .seccion-tag {
+  background-color: rgba(255,255,255,0.15);
+  color: var(--color-acento-claro);
+}
+
+/* Línea decorativa debajo del título */
+.linea-decorativa {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(                /* Degradado (gradiente) */
+    to right,
+    var(--color-acento),
+    var(--color-secundario)
+  );
+  margin: 16px auto 0;   /* auto en lados = centrado horizontal */
+  border-radius: 2px;
+}
+
+
+/* --- Botones (componente reutilizable) --- */
+/*
+  Principio: definir estilos base en .btn y
+  luego variaciones en .btn-primario, .btn-secundario, etc.
+*/
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: var(--radio-borde);
+  font-family: var(--fuente-cuerpo);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;             /* El cursor cambia a manita */
+  border: 2px solid transparent;
+  transition: var(--transicion); /* Animación suave al pasar el mouse */
+  letter-spacing: 0.5px;
+}
+
+/* Botón primario: fondo sólido */
+.btn-primario {
+  background-color: var(--color-acento);
+  color: var(--color-primario);
+  border-color: var(--color-acento);
+}
+
+/*
+  :hover es una PSEUDO-CLASE que aplica estilos cuando
+  el usuario pasa el mouse sobre el elemento.
+*/
+.btn-primario:hover {
+  background-color: transparent;
+  color: var(--color-acento);
+}
+
+/* Botón secundario: transparente con borde */
+.btn-secundario {
+  background-color: transparent;
+  color: var(--color-texto-claro);
+  border-color: var(--color-texto-claro);
+}
+
+.btn-secundario:hover {
+  background-color: var(--color-texto-claro);
+  color: var(--color-primario);
+}
+
+/* Botón de ancho completo */
+.btn-full {
+  width: 100%;
+  text-align: center;
+}
+
+
+/* ============================================================
+   4. BARRA DE NAVEGACIÓN (NAVBAR)
+   ============================================================
+   TÉCNICA: FLEXBOX con justify-content: space-between
+   para separar logo y menú a los extremos.
+============================================================ */
+.navbar {
+  /*
+    position: fixed mantiene la barra siempre visible
+    aunque el usuario haga scroll hacia abajo.
+  */
+  position: fixed;
+  top: 0;          /* Pegada al tope */
+  left: 0;
+  right: 0;        /* Ocupa todo el ancho */
+  z-index: 1000;   /* Aparece encima de todo lo demás */
+
+  /* ========================
+     FLEXBOX EN LA NAVBAR
+     ========================
+     display: flex activa el modo Flexbox.
+     El contenedor (.navbar) es el "flex container".
+     Sus hijos directos son los "flex items".
+  */
+  display: flex;
+  flex-direction: row;          /* Dirección: en fila (horizontal) */
+  justify-content: space-between; /* Logo a la izq, menú a la der */
+  align-items: center;          /* Centra verticalmente */
+
+  padding: 0 var(--espacio-lg);
+  height: 70px;
+  background-color: var(--color-primario);
+  box-shadow: var(--sombra-media);
+}
+
+/* Logo: también usa Flexbox para alinear escudo y texto */
+.nav-logo {
+  display: flex;         /* FLEXBOX: hijos en fila */
+  align-items: center;   /* Centra verticalmente */
+  gap: 12px;             /* Espacio entre flex items */
+  cursor: pointer;
+}
+
+/* Círculo del escudo del logo */
+.logo-escudo {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--color-acento), var(--color-acento-claro));
+  border-radius: 50%;       /* Círculo perfecto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fuente-titulo);
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--color-primario);
+}
+
+.logo-texto {
+  display: flex;
+  flex-direction: column; /* Apila los span verticalmente */
+  gap: 0;
+}
+
+.logo-titulo {
+  font-family: var(--fuente-titulo);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-texto-claro);
+  line-height: 1.2;
+}
+
+.logo-subtitulo {
+  font-size: 0.65rem;
+  color: var(--color-acento-claro);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Menú de navegación: FLEXBOX en fila */
+.nav-menu {
+  display: flex;
+  flex-direction: row;    /* Items del menú en fila */
+  align-items: center;
+  gap: var(--espacio-md); /* Espacio entre cada item */
+}
+
+.nav-menu a {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  transition: var(--transicion);
+  padding-bottom: 4px;
+  position: relative;
+}
+
+/* Efecto subrayado animado al hover */
+.nav-menu a::after {
+  /*
+    ::after es un PSEUDO-ELEMENTO que crea contenido
+    decorativo después del elemento sin modificar el HTML.
+    ::before crea contenido antes del elemento.
+  */
+  content: '';             /* Necesario para que aparezca */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;                /* Empieza sin ancho */
+  height: 2px;
+  background: var(--color-acento);
+  transition: width 0.3s ease; /* Animación del ancho */
+}
+
+.nav-menu a:hover::after {
+  width: 100%;  /* Al hover, el subrayado se expande al 100% */
+}
+
+.nav-menu a:hover {
+  color: var(--color-texto-claro);
+}
+
+/* Botón especial en el nav */
+.btn-nav {
+  background: var(--color-acento) !important;
+  /* !important fuerza que este estilo tenga mayor prioridad */
+  color: var(--color-primario) !important;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 700 !important;
+  transition: var(--transicion);
+}
+
+.btn-nav:hover {
+  background: var(--color-acento-claro) !important;
+  transform: translateY(-2px); /* Sube 2px al hacer hover */
+}
+
+
+/* ============================================================
+   5. SECCIÓN HERO (Portada)
+   ============================================================
+   background-image + overlay para crear el efecto de imagen
+   con capa de color encima.
+============================================================ */
+.hero {
+  /*
+    min-height: 100vh hace que la sección ocupe al menos
+    el 100% de la altura de la ventana del navegador (viewport height).
+  */
+  min-height: 100vh;
+  position: relative;
+
+  /*
+    background-image con url() para imagen de fondo.
+    background-size: cover → la imagen cubre todo el espacio.
+    background-position: center → centrada.
+    background-attachment: fixed → efecto parallax suave.
+  */
+  background-image:url(WhatsApp\ Image\ 2026-05-20\ at\ 7.19.45\ PM.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Capa oscura sobre la imagen (overlay) */
+.hero-overlay {
+  position: absolute; /* Se posiciona dentro del hero */
+  inset: 0;           /* Shorthand para top:0 right:0 bottom:0 left:0 */
+
+  /*
+    linear-gradient para crear un degradado de colores.
+    Aquí usamos el degradado como overlay semitransparente.
+  */
+  background: linear-gradient(
+    135deg,
+    rgba(89, 150, 173, 0.88) 0%,
+    rgba(76, 174, 204, 0.7) 100%
+  );
+
+  /* FLEXBOX para centrar el contenido en la pantalla */
+  display: flex;
+  align-items: center;      /* Centrado vertical */
+  justify-content: center;  /* Centrado horizontal */
+  padding: var(--espacio-lg);
+  padding-top: 100px; /* Espacio para la navbar fija */
+}
+
+.hero-content {
+  max-width: 750px;
+  text-align: center;
+
+  /*
+    FLEXBOX en columna para apilar los elementos
+    del hero verticalmente.
+  */
+  display: flex;
+  flex-direction: column;  /* Dirección: columna (vertical) */
+  align-items: center;     /* Centrado horizontal */
+  gap: var(--espacio-md);  /* Espacio entre elementos */
+}
+
+.hero-subtag {
+  color: var(--color-acento-claro);
+  font-size: 0.9rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.hero-titulo {
+  font-family: var(--fuente-titulo);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  /*
+    clamp(min, preferido, max):
+    El tamaño se ajusta dinámicamente entre mín y máx.
+    7vw = 7% del ancho de la ventana (viewport width).
+  */
+  color: var(--color-texto-claro);
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.hero-descripcion {
+  color: rgba(255,255,255,0.85);
+  font-size: 1.15rem;
+  max-width: 550px;
+  line-height: 1.8;
+}
+
+/* Botones del hero: Flexbox en fila */
+.hero-botones {
+  display: flex;
+  flex-direction: row;
+  gap: var(--espacio-sm);
+  flex-wrap: wrap;         /* Si no caben en una fila, bajan a la siguiente */
+  justify-content: center;
+}
+
+
+/* ============================================================
+   6. ESTADÍSTICAS
+   ============================================================
+   FLEXBOX en fila con distribución espaciada (space-around).
+============================================================ */
+.estadisticas {
+  background-color: var(--color-primario);
+  padding: var(--espacio-md) var(--espacio-lg);
+
+  /*
+    ========================
+    FLEXBOX — FILA ESPACIADA
+    ========================
+  */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; /* Espacio igual alrededor de cada item */
+  align-items: center;
+  flex-wrap: wrap;     /* En pantallas pequeñas, los items bajan */
+  gap: var(--espacio-md);
+}
+
+.stat-item {
+  text-align: center;
+  padding: var(--espacio-sm);
+
+  /*
+    FLEXBOX en columna para apilar número y label
+  */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-numero {
+  font-family: var(--fuente-titulo);
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--color-acento);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+/* ============================================================
+   7. SECCIÓN NOSOTROS
+   ============================================================
+   FLEXBOX con dos columnas: texto e imagen.
+   align-items: center centra ambas columnas verticalmente.
+============================================================ */
+.seccion-nosotros {
+  padding: var(--espacio-xl) var(--espacio-lg);
+  max-width: 1200px;   /* Máximo ancho para legibilidad */
+  margin: 0 auto;      /* Centrado horizontal en la página */
+}
+
+.nosotros-contenido {
+  /*
+    =============================
+    FLEXBOX — DOS COLUMNAS
+    =============================
+    display: flex pone texto e imagen lado a lado.
+    align-items: center los centra verticalmente.
+  */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Texto: ocupa el 55% del espacio disponible */
+.nosotros-texto {
+  flex: 1.1;
+  /*
+    flex: 1.1 es shorthand (Atajo de teclado) para flex-grow: 1.1
+    Controla cuánto "crece" este elemento para llenar el espacio.
+    Un valor de 1.1 vs 1 hace que el texto sea ligeramente más ancho.
+  */
+}
+
+.nosotros-texto h3 {
+  font-family: var(--fuente-titulo);
+  font-size: 1.8rem;
+  color: var(--color-primario);
+  margin-bottom: var(--espacio-sm);
+}
+
+.nosotros-texto p {
+  color: var(--color-texto-gris);
+  margin-bottom: var(--espacio-sm);
+  font-size: 1rem;
+}
+
+/* Lista con iconos de check */
+.lista-caracteristicas {
+  margin-top: var(--espacio-sm);
+}
+
+.lista-caracteristicas li {
+  display: flex;        /* FLEXBOX: icono y texto en fila */
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-borde);
+  font-size: 0.95rem;
+}
+
+.lista-caracteristicas li:last-child {
+  border-bottom: none; /* :last-child = solo el último elemento */
+}
+
+.icono-check {
+  background-color: var(--color-secundario);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  flex-shrink: 0; /* Evita que el icono se encoja */
+}
+
+/* Imagen: ocupa el 45% del espacio */
+.nosotros-imagen {
+  flex: 1;
+}
+
+.imagen-colegio {
+  border-radius: var(--radio-borde-lg);
+  overflow: hidden;    /* La imagen no se sale del borde redondeado */
+  box-shadow: var(--sombra-fuerte);
+  position: relative;
+}
+
+.imagen-colegio img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;   /* La imagen cubre el área sin deformarse */
+  transition: transform 0.5s ease;
+}
+
+.imagen-colegio:hover img {
+  transform: scale(1.03); /* Zoom suave al pasar el mouse */
+}
+
+.imagen-colegio figcaption {
+  background: var(--color-primario);
+  color: var(--color-acento-claro);
+  text-align: center;
+  padding: 12px;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+
+/* ============================================================
+   8. NIVELES EDUCATIVOS — CSS GRID (3 columnas)
+   ============================================================
+   CSS GRID crea una cuadrícula bidimensional.
+   Perfecto para layouts de tarjetas.
+============================================================ */
+.seccion-niveles {
+  background-color: var(--color-primario);
+  padding: var(--espacio-xl) var(--espacio-lg);
+}
+
+.grid-niveles {
+  /*
+    ===========================
+    CSS GRID — 3 COLUMNAS IGUALES
+    ===========================
+    display: grid activa el modo Grid.
+    grid-template-columns define las columnas.
+    repeat(3, 1fr) = 3 columnas de igual ancho.
+    1fr = 1 "fracción" del espacio disponible.
+  */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;           /* Espacio entre celdas del grid */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tarjeta de nivel educativo */
+.tarjeta-nivel {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radio-borde-lg);
+  padding: var(--espacio-md);
+  transition: var(--transicion);
+  position: relative;
+
+  /*
+    FLEXBOX en columna dentro de la tarjeta:
+    para que el botón siempre quede al fondo.
+  */
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-sm);
+}
+
+.tarjeta-nivel:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-8px);  /* Sube la tarjeta al hacer hover */
+  box-shadow: var(--sombra-fuerte);
+}
+
+/* Tarjeta destacada (la del medio) */
+.tarjeta-destacada {
+  background: var(--color-acento) !important;
+  border-color: var(--color-acento) !important;
+  transform: scale(1.03); /* Ligeramente más grande */
+}
+
+.tarjeta-destacada h3,
+.tarjeta-destacada p,
+.tarjeta-destacada li {
+  color: var(--color-primario) !important;
+}
+
+.tarjeta-badge {
+  position: absolute;    /* Posición sobre la tarjeta */
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%); /* Centrado horizontal */
+  background: var(--color-primario);
+  color: var(--color-acento);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 50px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.tarjeta-icono {
+  font-size: 2.5rem;
+}
+
+.tarjeta-cuerpo {
+  flex: 1; /* Ocupa todo el espacio disponible (empuja el botón al fondo) */
+}
+
+.tarjeta-cuerpo h3 {
+  font-family: var(--fuente-titulo);
+  font-size: 1.5rem;
+  color: var(--color-texto-claro);
+  margin-bottom: 6px;
+}
+
+.tarjeta-edad {
+  color: var(--color-acento-claro);
+  font-size: 0.85rem;
+  margin-bottom: var(--espacio-sm);
+}
+
+.tarjeta-cuerpo p {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: var(--espacio-sm);
+}
+
+.tarjeta-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tarjeta-lista li {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+  padding-left: 16px;
+  position: relative;
+}
+
+/* Bullet (punto) usando ::before */
+.tarjeta-lista li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--color-acento);
+}
+
+.btn-tarjeta {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: var(--radio-borde);
+  color: var(--color-texto-claro);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transicion);
+  margin-top: auto; /* Empuja el botón al fondo */
+}
+
+.tarjeta-destacada .btn-tarjeta {
+  background: var(--color-primario);
+  border-color: var(--color-primario);
+  color: var(--color-acento);
+}
+
+.btn-tarjeta:hover {
+  background: var(--color-acento);
+  border-color: var(--color-acento);
+  color: var(--color-primario);
+}
+
+
+/* ============================================================
+   9. GALERÍA — CSS GRID con celdas de diferentes tamaños
+   ============================================================
+   grid-column: span 2 hace que un elemento ocupe 2 columnas.
+   Esto crea una galería dinámica y asimétrica.
+============================================================ */
+.seccion-galeria {
+  padding: var(--espacio-xl) var(--espacio-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid-galeria {
+  /*
+    ===================================
+    CSS GRID — COLUMNAS PARA GALERÍA
+    ===================================
+    3 columnas de tamaño igual.
+    Algunas imágenes ocuparán 2 columnas (span 2).
+  */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 250px;  /* Todas las filas tienen 250px de alto */
+  gap: 12px;
+}
+
+/* Elemento normal de galería */
+.galeria-item {
+  border-radius: var(--radio-borde);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+/*
+  grid-column: span 2 hace que esta imagen ocupe
+  DOS columnas del grid en lugar de una.
+*/
+.galeria-grande {
+  grid-column: span 2; /* Ocupa 2 columnas */
+}
+
+.galeria-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.galeria-item:hover img {
+  transform: scale(1.08); /* Zoom al hacer hover */
+}
+
+/* Caption (descripción) que aparece al hacer hover */
+.galeria-item figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26,58,42,0.95),
+    transparent
+  );
+  color: var(--color-texto-claro);
+  padding: 24px 16px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  /* La descripción empieza invisible */
+  opacity: 0;
+  transform: translateY(8px);
+  transition: var(--transicion);
+}
+
+.galeria-item:hover figcaption {
+  opacity: 1;           /* Aparece al hacer hover */
+  transform: translateY(0);
+}
+
+
+/* ============================================================
+   10. DOCENTES — CSS GRID RESPONSIVE (auto-fit)
+   ============================================================
+   auto-fit + minmax crea un grid que se adapta
+   automáticamente a cualquier pantalla.
+============================================================ */
+.seccion-docentes {
+  background-color: var(--color-fondo-oscuro);
+  padding: var(--espacio-xl) var(--espacio-lg);
+}
+
+.grid-docentes {
+  /*
+    ================================
+    CSS GRID RESPONSIVE (auto-fit)
+    ================================
+    auto-fit: llena el espacio con la cantidad de columnas
+              que quepan según el mínimo (220px).
+    minmax(220px, 1fr): cada columna mide entre 220px y 1 fracción.
+
+    En pantalla grande: 4 columnas.
+    En tablet:          2 columnas.
+    En móvil:           1 columna.
+    ¡Todo AUTOMÁTICAMENTE sin media queries!
+  */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--espacio-md);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tarjeta-docente {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radio-borde-lg);
+  padding: var(--espacio-md);
+  text-align: center;
+  transition: var(--transicion);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.tarjeta-docente:hover {
+  background: rgba(255,255,255,0.09);
+  transform: translateY(-6px);
+  border-color: var(--color-acento);
+}
+
+.docente-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--color-acento);
+  margin-bottom: 10px;
+}
+
+.docente-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tarjeta-docente h4 {
+  font-family: var(--fuente-titulo);
+  font-size: 1.1rem;
+  color: var(--color-texto-claro);
+}
+
+.docente-cargo {
+  color: var(--color-acento);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.docente-especialidad {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.82rem;
+}
+
+
+/* ============================================================
+   11. CONTACTO — FLEXBOX con dos columnas
+   ============================================================
+   Igual que "Nosotros": flex-direction: row divide en dos
+   columnas: información de contacto y formulario.
+============================================================ */
+.seccion-contacto {
+  padding: var(--espacio-xl) var(--espacio-lg);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.contacto-contenido {
+  /*
+    =================================
+    FLEXBOX — DOS COLUMNAS
+    =================================
+    align-items: flex-start alinea ambas columnas
+    desde arriba (no las centra verticalmente).
+  */
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+/* Columna de información: 45% del espacio */
+.contacto-info {
+  flex: 1;
+}
+
+.contacto-info h3 {
+  font-family: var(--fuente-titulo);
+  font-size: 1.8rem;
+  color: var(--color-primario);
+  margin-bottom: var(--espacio-md);
+}
+
+/* Cada dato de contacto: Flexbox en fila */
+.info-item {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: var(--espacio-sm);
+  padding: var(--espacio-sm);
+  background: white;
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-suave);
+}
+
+.info-icono {
+  font-size: 1.5rem;
+  flex-shrink: 0; /* El icono no se encoge */
+}
+
+.info-item strong {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-texto-gris);
+  margin-bottom: 4px;
+}
+
+.info-item p {
+  font-size: 0.95rem;
+  color: var(--color-texto);
+}
+
+/* Columna del formulario: 55% del espacio */
+.contacto-form {
+  flex: 1.2;
+}
+
+.formulario {
+  background: white;
+  border-radius: var(--radio-borde-lg);
+  padding: var(--espacio-md);
+  box-shadow: var(--sombra-media);
+
+  /* FLEXBOX en columna para apilar los campos */
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-sm);
+}
+
+.campo-grupo {
+  display: flex;
+  flex-direction: column;  /* Label arriba, input abajo */
+  gap: 6px;
+}
+
+.campo-grupo label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primario);
+  letter-spacing: 0.3px;
+}
+
+/* Estilos para input, select y textarea (multiple selector) */
+.campo-grupo input,
+.campo-grupo select,
+.campo-grupo textarea {
+  padding: 12px 16px;
+  border: 1.5px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.95rem;
+  color: var(--color-texto);
+  background: var(--color-fondo);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;    /* Quita el borde azul por defecto del navegador */
+}
+
+/*
+  :focus es la pseudo-clase activa cuando el usuario
+  hace clic en el campo y está listo para escribir.
+*/
+.campo-grupo input:focus,
+.campo-grupo select:focus,
+.campo-grupo textarea:focus {
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
+}
+
+.campo-grupo textarea {
+  resize: vertical; /* El usuario puede cambiar solo la altura */
+  min-height: 100px;
+}
+
+
+/* ============================================================
+   12. PIE DE PÁGINA (FOOTER)
+   ============================================================
+   CSS GRID de 3 columnas + Flexbox en items del footer.
+============================================================ */
+.pie-pagina {
+  background-color: var(--color-primario);
+  color: rgba(255,255,255,0.75);
+  padding: var(--espacio-lg);
+}
+
+.footer-grid {
+  /*
+    CSS GRID — 3 COLUMNAS PARA EL FOOTER
+  */
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* Primera columna más ancha */
+  gap: var(--espacio-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: var(--espacio-md);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-logo {
+  display: flex;  /* FLEXBOX: escudo y texto en fila */
+  align-items: center;
+  gap: 12px;
+  margin-bottom: var(--espacio-sm);
+}
+
+.footer-logo .logo-escudo {
+  flex-shrink: 0;
+}
+
+.footer-logo span {
+  font-family: var(--fuente-titulo);
+  font-size: 1.2rem;
+  color: var(--color-texto-claro);
+}
+
+.footer-columna p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.footer-columna h4 {
+  color: var(--color-acento-claro);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--espacio-sm);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links a {
+  font-size: 0.9rem;
+  transition: var(--transicion);
+}
+
+.footer-links a:hover {
+  color: var(--color-acento);
+  padding-left: 6px;
+}
+
+/* Iconos de redes sociales: Flexbox en fila */
+.redes-sociales {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.red-social {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  transition: var(--transicion);
+}
+
+.red-social:hover {
+  background: var(--color-acento);
+  border-color: var(--color-acento);
+  color: var(--color-primario);
+  transform: scale(1.1);
+}
+
+/* Derechos de autor */
+.footer-derechos {
+  max-width: 1200px;
+  margin: var(--espacio-md) auto 0;
+  text-align: center;
+
+  /* FLEXBOX para centrar los dos párrafos */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.footer-derechos p {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
+}
+
+
+/* ============================================================
+   13. MEDIA QUERIES — DISEÑO RESPONSIVE
+   ============================================================
+   Media queries adaptan el diseño a diferentes tamaños de pantalla.
+
+   SINTAXIS:
+   @media (max-width: Xpx) { ... }
+   → aplica cuando la pantalla tiene MÁXIMO X píxeles de ancho.
+
+   BREAKPOINTS (puntos de quiebre) comunes:
+   • 768px  = Tablets
+   • 480px  = Móviles
+============================================================ */
+
+/* --- Tablet (pantallas menores a 992px) --- */
+@media (max-width: 992px) {
+
+  /* Grid de 3 columnas → 1 columna */
+  .grid-niveles {
+    grid-template-columns: 1fr;  /* Solo 1 columna */
+  }
+
+  /* La tarjeta destacada ya no se escala en móvil */
+  .tarjeta-destacada {
+    transform: none;
+  }
+
+  /* Galería: 2 columnas */
+  .grid-galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* La imagen grande ocupa solo 1 columna (no 2) */
+  .galeria-grande {
+    grid-column: span 1;
+  }
+
+  /* Footer: 1 columna */
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* --- Móvil (pantallas menores a 768px) --- */
+@media (max-width: 768px) {
+
+  /* Variables: tamaño base más pequeño */
+  :root {
+    --espacio-lg: 32px;
+    --espacio-xl: 60px;
+  }
+
+  /* Navbar: ocultar menú (en proyecto real se haría un hamburger menu) */
+  .nav-menu {
+    display: none;
+  }
+
+  /* Botones del hero en columna */
+  .hero-botones {
+    flex-direction: column;
+  }
+
+  /* Nosotros: de 2 columnas a 1 columna (columna vertical) */
+  .nosotros-contenido {
+    flex-direction: column;
+  }
+
+  /* Contacto: de 2 columnas a 1 columna */
+  .contacto-contenido {
+    flex-direction: column;
+  }
+
+  /* Galería: 1 columna */
+  .grid-galeria {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 200px;
+  }
+
+  /* Estadísticas: 2 por fila */
+  .estadisticas {
+    justify-content: space-evenly;
+  }
+
+}
